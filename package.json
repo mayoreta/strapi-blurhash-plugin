@@ -1,6 +1,6 @@
 {
-  "name": "@strapi/plugin-blurhash",
-  "version": "0.0.0",
+  "name": "strapi-plugin-blurhash",
+  "version": "0.0.1",
   "description": "This is the description of the plugin.",
   "strapi": {
     "name": "blurhash",
@@ -8,10 +8,6 @@
     "kind": "plugin"
   },
   "dependencies": {
-    "@strapi/design-system": "^1.6.3",
-    "@strapi/helper-plugin": "^4.6.0",
-    "@strapi/icons": "^1.6.3",
-    "prop-types": "^15.7.2",
     "blurhash": "^2.0.5",
     "canvas": "^2.11.2"
   },
@@ -34,11 +30,11 @@
     "styled-components": "^5.3.6"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "Mayoreta"
   },
   "maintainers": [
     {
-      "name": "A Strapi developer"
+      "name": "Mayoreta"
     }
   ],
   "engines": {
