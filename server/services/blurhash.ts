@@ -1,6 +1,6 @@
 import { Strapi } from "@strapi/strapi";
 import axios from "axios";
-import * as sharp from "sharp";
+import sharp from "sharp";
 import { encode } from "blurhash";
 
 const loadImage = async (url: string): Promise<Buffer> => {
