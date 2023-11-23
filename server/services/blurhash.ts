@@ -27,7 +27,8 @@ const encodeImage = async (buffer: Buffer): Promise<string> => {
   const { data, info } = await image
     .raw()
     .ensureAlpha()
-    .resize(w, h, { fit: "fill" })
+    .flatten({ background: "#fff" })
+    .resize(w, h)
     .toBuffer({ resolveWithObject: true });
 
   let componentX = 3;
