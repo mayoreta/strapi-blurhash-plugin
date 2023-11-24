@@ -17,30 +17,15 @@ const encodeImage = async (buffer: Buffer): Promise<string> => {
   const image = sharp(buffer);
   const { width, height } = await image.metadata();
 
-  let w, h;
-  w = h = 32;
-  if (width && height) {
-    if (width > height) w = Math.round((w * width) / height);
-    else h = Math.round((h * height) / width);
-  }
-
   const { data, info } = await image
-    .raw()
-    .ensureAlpha()
-    .flatten({ background: "#fff" })
-    .resize(w, h)
-    .toBuffer({ resolveWithObject: true });
-
-  let componentX = 3;
-  let componentY = Math.round((3 * info.height) / info.width);
-
-  if (info.width > info.height) {
-    componentX = Math.round((3 * info.width) / info.height);
-    componentY = 3;
-  }
+  .raw()
+  .ensureAlpha()
+  .flatten({ background: '#fff' })
+  .resize(width, height)
+  .toBuffer({ resolveWithObject: true });
 
   const buf = new Uint8ClampedArray(data);
-  return encode(buf, info.width, info.height, componentX, componentY);
+  return encode(buf, info.width, info.height, 4, 3);
 };
 
 export default ({ strapi }: { strapi: Strapi }) => ({
