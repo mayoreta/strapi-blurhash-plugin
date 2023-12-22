@@ -15,13 +15,22 @@ const loadImage = async (url: string): Promise<Buffer> => {
 
 const encodeImage = async (buffer: Buffer): Promise<string> => {
   const image = sharp(buffer);
-  const { width, height } = await image.metadata();
+  let { width, height } = await image.metadata();
+
+  if (width! > 250 || height! > 250) {
+    width = 250
+    height = 250
+  }
 
   const { data, info } = await image
   .raw()
   .ensureAlpha()
+  .resize({
+    width,
+    height,
+    fit: 'inside',
+  })
   .flatten({ background: '#fff' })
-  .resize(width, height)
   .toBuffer({ resolveWithObject: true });
 
   const buf = new Uint8ClampedArray(data);
